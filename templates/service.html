@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Leaf-Lens</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="img/x-icon">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playball&display=swap" rel="stylesheet">
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="{{ url_for('static', filename='lib/animate/animate.min.css') }}" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+        <!-- No-Cache Meta Tags -->
+        <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+
+        <meta content="" name="keywords">
+    </head>
+
+        <body>
+            {% if session.loggedin %}
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" role="status"></div>
+        </div>
+        <!-- Spinner End -->
+
+
+       <!-- Navbar start -->
+       <div class="container-fluid nav-bar">
+        <div class="container">
+            <nav class="navbar navbar-light navbar-expand-lg py-4">
+                <a href="{{url_for('index')}}" class="navbar-brand">
+                    <h1 class="text-success fw-bold mb-0"><img src="{{ url_for('static', filename='img/icons.png') }}"> Leaf-Lens </h1>
+                </a>
+                <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars text-primary"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav mx-auto">
+                        <a href="{{url_for('index')}}" class="nav-item nav-link active">Home</a>
+                        <a href="{{url_for('about')}}" class="nav-item nav-link">About Us</a>
+                        <a href="{{url_for('service')}}" class="nav-item nav-link">Library</a>
+                        <a href="{{url_for('diagnosis')}}" class="nav-item nav-link">Diagnosis</a>
+                        <a href="{{url_for('blog')}}" class="nav-item nav-link">Blog</a>
+                        <a href="{{ url_for('contact') }}" class="nav-item nav-link">Contact</a>
+                    </div>
+                    <!-- <button class="btn-search btn btn-primary btn-md-square me-4 rounded-circle d-none d-lg-inline-flex" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></button> -->
+                    <a href="{{url_for('logout')}}" class="btn btn-success py-2 px-4 d-none d-xl-inline-block rounded-pill" id="logoutBtn"><i class="bi bi-box-arrow-right"></i> Logout</a>&nbsp;
+                    <a href="{{url_for('user_profile')}}" class="btn btn-success py-2 px-4 d-none d-xl-inline-block rounded-pill"><i class="bi bi-person-badge"></i> profile</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+        <!-- Hero Start -->
+        <div class="container-fluid bg-light py-6 my-6 mt-0">
+            <div class="container text-center animated bounceInDown">
+                <h1 class="display-1 mb-4">Library</h1>
+                <ol class="breadcrumb justify-content-center mb-0 animated bounceInDown">
+                    <li class="breadcrumb-item "><a href="{{url_for('index')}}">Home</a></li>
+                    <!-- <li class="breadcrumb-item"><a href="#">Pages</a></li> -->
+                    <li class="breadcrumb-item text-dark" aria-current="page">Library</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Hero End -->
+
+
+        <!-- Service Start -->
+        <div class="container-fluid service py-6">
+            <div class="container">
+                <div class="text-center wow bounceInUp" data-wow-delay="0.1s">
+                    <small class="d-inline-block fw-bold text-dark text-uppercase bg-light border border-success rounded-pill px-4 py-1 mb-3">Our Library</small>
+                    <h1 class="display-5 mb-5">Plant and Crop Leaf Disease Details</h1>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.1s">
+                        <div class="bg-light rounded service-item">
+                            <div class="service-content d-flex align-items-center justify-content-center p-4">
+                                <div class="service-content-icon text-center">
+                                    <img src="{{ url_for('static', filename='img/apple.jpg') }}" class="img-fluid rounded-circle flex-shrink-0 w-50 h-50" alt="">
+                                    <h4 class="mb-3">APPLE</h4>
+                                    <p class="mb-4" style="color: black;">A juicy, sweet fruit often eaten fresh or used in desserts. Rich in fiber and antioxidants.</p>
+                                    <a href="{{url_for('apple')}}" class="btn btn-success px-4 py-2 rounded-pill">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col -sm-12 wow bounceInUp" data-wow-delay="0.3s">
+                        <div class="bg-light round   ed service-item">
+                            <div class="service-content d-flex align-items-center justify-content-center p-4">
+                                <div class="service-content-icon text-center">
+                                    <img src="{{ url_for('static', filename='img/tomato.jpg') }}" class="img-fluid rounded-circle flex-shrink-0 w-50 h-50" alt="">
+                                    <h4 class="mb-3">TOMATO</h4>
+                                    <p class="mb-4" style="color: black;">A red, edible fruit often used in savory dishes and sauces. High in vitamin C and lycopene.</p>
+                                    <a href="{{url_for('tomato')}}" class="btn btn-success px-4 py-2 rounded-pill">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.5s">
+                        <div class="bg-light rounded service-item">
+                            <div class="service-content d-flex align-items-center justify-content-center p-4">
+                                <div class="service-content-icon text-center">
+                                    <img src="{{ url_for('static', filename='img/grape.jpg') }}" class="img-fluid rounded-circle flex-shrink-0 w-50 h-50" alt="">
+                                    <h4 class="mb-3">GRAPE</h4>
+                                    <p class="mb-4" style="color:black ;"> A small, round fruit often eaten fresh or used to make wine and juice. Rich in vitamins C and K.</p>
+                                    <a href="{{url_for('grape')}}" class="btn btn-success px-4 py-2 rounded-pill">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.7s">
+                        <div class="bg-light rounded service-item">
+                            <div class="service-content d-flex align-items-center justify-content-center p-4">
+                                <div class="service-content-icon text-center">
+                                    <img src="{{ url_for('static', filename='img/cherry.jpg') }}" class="img-fluid rounded-circle flex-shrink-0 w-50 h-50" alt="">
+                                    <h4 class="mb-3">CHERRY</h4>
+                                    <p class="mb-4" style="color: black;">A small, stone fruit often eaten fresh or used in baked goods. High in vitamin C and antioxidants.</p>
+                                    <a href="{{url_for('cherry')}}" class="btn btn-success px-4 py-2 rounded-pill">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.1s">
+                        <div class="bg-light rounded service-item">
+                            <div class="service-content d-flex align-items-center justify-content-center p-4">
+                                <div class="service-content-icon text-center">
+                                    <img src="{{ url_for('static', filename='img/corn.jpg') }}" class="img-fluid rounded-circle flex-shrink-0 w-50 h-50" alt="">
+                                    <h4 class="mb-3">CORN</h4>
+                                    <p class="mb-4" style="color: black;">A sweet, starchy vegetable often grilled or boiled. High in fiber and vitamins B and E.</p>
+                                    <a href="{{url_for('corn')}}" class="btn btn-success px-4 py-2 rounded-pill">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.3s">
+                        <div class="bg-light rounded service-item">
+                            <div class="service-content d-flex align-items-center justify-content-center p-4">
+                                <div class="service-content-icon text-center">
+                                    <img src="{{ url_for('static', filename='img/strawberry.jpg') }}" class="img-fluid rounded-circle flex-shrink-0 w-50 h-50" alt="">
+                                    <h4 class="mb-3">STRAWBERRY</h4>
+                                    <p class="mb-4" style="color: black;">A sweet, red fruit often eaten fresh or used in desserts. High in vitamin C and antioxidants.</p>
+                                    <a href="{{url_for('strawberry')}}" class="btn btn-success px-4 py-2 rounded-pill">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.5s">
+                        <div class="bg-light rounded service-item">
+                            <div class="service-content d-flex align-items-center justify-content-center p-4">
+                                <div class="service-content-icon text-center">
+                                    <img src="{{ url_for('static', filename='img/potato.jpg') }}" class="img-fluid rounded-circle flex-shrink-0 w-50 h-50" alt="">
+                                    <h4 class="mb-3">POTATO</h4>
+                                    <p class="mb-4" style="color: black;">A starchy, edible root often baked, mashed, or fried. High in fiber and potassium.</p>
+                                    <a href="{{url_for('potato')}}" class="btn btn-success px-4 py-2 rounded-pill">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.5s">
+                        <div class="bg-light rounded service-item">
+                            <div class="service-content d-flex align-items-center justify-content-center p-4">
+                                <div class="service-content-icon text-center">
+                                    <img src="{{ url_for('static', filename='img/soyabean.jpg') }}" class="img-fluid rounded-circle flex-shrink-0 w-50 h-50" alt="">
+                                    <h4 class="mb-3">SOYBEAN</h4>
+                                    <p class="mb-4" style="color: black;">A legume often used in Asian cuisine and as a protein source. High in protein and isoflavones.</p>
+                                    <a href="{{url_for('soybean')}}" class="btn btn-success px-4 py-2 rounded-pill">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.7s">
+                        <div class="bg-light rounded service-item">
+                            <div class="service-content d-flex align-items-center justify-content-center p-4">
+                                <div class="service-content-icon text-center">
+                                    <img src="{{ url_for('static', filename='img/mango.jpg') }}" class="img-fluid rounded-circle flex-shrink-0 w-50 h-50" alt="">
+                                    <h4 class="mb-3">MANGO</h4>
+                                    <p class="mb-4" style="color: black;"> A tropical, juicy fruit with a rich, sweet flavor and smooth texture. High in vitamins A and C, as well as dietary fiber.</p>
+                                    <a href="{{url_for('mango')}}" class="btn btn-success px-4 py-2 rounded-pill">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.7s">
+                        <div class="bg-light rounded service-item">
+                            <div class="service-content d-flex align-items-center justify-content-center p-4">
+                                <div class="service-content-icon text-center">
+                                    <img src="{{ url_for('static', filename='img/rice.jpg') }}" class="img-fluid rounded-circle flex-shrink-0 w-50 h-50" alt="">
+                                    <h4 class="mb-3">RICE</h4>
+                                    <p class="mb-4" style="color: black;">A staple grain is rich in carbohydrates, it provides energy and serves as a foundation for many dishes.</p>
+                                    <a href="{{url_for('rice')}}" class="btn btn-success px-4 py-2 rounded-pill">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.5s">
+                        <div class="bg-light rounded service-item">
+                            <div class="service-content d-flex align-items-center justify-content-center p-4">
+                                <div class="service-content-icon text-center">
+                                    <img src="{{ url_for('static', filename='img/squash.jpg') }}" class="img-fluid rounded-circle flex-shrink-0 w-50 h-50" alt="">
+                                    <h4 class="mb-3">SQUASH</h4>
+                                    <p class="mb-4" style="color: black;">A versatile, edible gourd often used in soups and baked dishes. High in fiber and vitamins A and C.</p>
+                                    <a href="{{url_for('squash')}}" class="btn btn-success px-4 py-2 rounded-pill">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 wow bounceInUp" data-wow-delay="0.7s">
+                        <div class="bg-light rounded service-item">
+                            <div class="service-content d-flex align-items-center justify-content-center p-4">
+                                <div class="service-content-icon text-center">
+                                    <img src="{{ url_for('static', filename='img/orange.jpg') }}" class="img-fluid rounded-circle flex-shrink-0 w-50 h-50" alt="">
+                                    <h4 class="mb-3">ORANGE</h4>
+                                    <p class="mb-4" style="color: black;"> A juicy, sweet fruit often eaten fresh or juiced. High in vitamin C and flavonoids.</p>
+                                    <a href="{{url_for('orange')}}" class="btn btn-success px-4 py-2 rounded-pill">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>               
+                </div>
+            </div>
+        </div>
+        <!-- Service End -->
+
+
+        <!-- Testimonial Start -->
+        <div class="container-fluid py-6">
+            <div class="container">
+                <div class="text-center wow bounceInUp" data-wow-delay="0.1s">
+                    <center><h1 class="display-1 mb-4 animated bounceInUp">What Our <span class="text-success">Customers</span> says!</h1></center>
+                </div>
+                <div class="owl-carousel owl-theme testimonial-carousel testimonial-carousel-1 mb-4 wow bounceInUp" data-wow-delay="0.1s">
+                    <div class="testimonial-item rounded bg-light">
+                        <div class="d-flex mb-3">
+                            <img src="{{ url_for('static', filename='img/testimonial-1.jpg') }}" class="img-fluid rounded-circle flex-shrink-0" alt="">
+                            <div class="position-absolute" style="top: 15px; right: 20px;">
+                                <i class="fa fa-quote-right fa-2x"></i>
+                            </div>
+                            <div class="ps-3 my-auto">
+                                <h4 class="mb-0">Gursewak Singh</h4>
+                                <p class="m-0">Farmer</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="d-flex">
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                            </div>
+                            <p class="fs-5 m-0 pt-3">Leaf-Lens is my go-to app for quick diagnosis, confirmation, causes and treatment suggestions.I love the care routines.</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-item rounded bg-light">
+                        <div class="d-flex mb-3">
+                            <img src="{{ url_for('static', filename='img/testimonial-9.jpg') }}" class="img-fluid rounded-circle flex-shrink-0" alt="">
+                            <div class="position-absolute" style="top: 15px; right: 20px;">
+                                <i class="fa fa-quote-right fa-2x"></i>
+                            </div>
+                            <div class="ps-3 my-auto">
+                                <h4 class="mb-0">Radha Prasanna</h4>
+                                <p class="m-0">Home-plants owner</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="d-flex">
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                            </div>
+                            <p class="fs-5 m-0 pt-3">This app is by far my favorite.It's plant diagnostics are great and almost always spot on.I love the care routines and the interesting articles.</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-item rounded bg-light">
+                        <div class="d-flex mb-3">
+                            <img src="{{ url_for('static', filename='img/testimonial-3.jpg') }}" class="img-fluid rounded-circle flex-shrink-0" alt="">
+                            <div class="position-absolute" style="top: 15px; right: 20px;">
+                                <i class="fa fa-quote-right fa-2x"></i>
+                            </div>
+                            <div class="ps-3 my-auto">
+                                <h4 class="mb-0">Nilesh Dighe</h4>
+                                <p class="m-0">Farmer</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="d-flex">
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                            </div>
+                            <p class="fs-5 m-0 pt-3">When you talk about new trends in agriculture, I can only think of Leaf-Lens.This website is great, especially for plant diagnosis.</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-item rounded bg-light">
+                        <div class="d-flex mb-3">
+                            <img src="{{ url_for('static', filename='img/testimonial-4.jpg') }}" class="img-fluid rounded-circle flex-shrink-0" alt="">
+                            <div class="position-absolute" style="top: 15px; right: 20px;">
+                                <i class="fa fa-quote-right fa-2x"></i>
+                            </div>
+                            <div class="ps-3 my-auto">
+                                <h4 class="mb-0">Shivaji Doudkarwadi</h4>
+                                <p class="m-0">Agro-Retailer</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="d-flex">
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                            </div>
+                            <p class="fs-5 m-0 pt-3">This website is modern magic of agriculture.Through its step-by-step guide to best practices and products,it helped me improve a lot.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="owl-carousel testimonial-carousel testimonial-carousel-2 wow bounceInUp" data-wow-delay="0.3s">
+                    <div class="testimonial-item rounded bg-light">
+                        <div class="d-flex mb-3">
+                            <img src="{{ url_for('static', filename='img/testimonial-6.jpg') }}" class="img-fluid rounded-circle flex-shrink-0" alt="">
+                            <div class="position-absolute" style="top: 15px; right: 20px;">
+                                <i class="fa fa-quote-right fa-2x"></i>
+                            </div>
+                            <div class="ps-3 my-auto">
+                                <h4 class="mb-0">Kamlesh Yadav</h4>
+                                <p class="m-0">Farmer</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="d-flex">
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                            </div>
+                            <p class="fs-5 m-0 pt-3">When you talk about new trends in agriculture, I can only think of Leaf-Lens.This website is great, especially for plant diagnosis.</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-item rounded bg-light">
+                        <div class="d-flex mb-3">
+                            <img src="{{ url_for('static', filename='img/testimonial-7.jpg') }}" class="img-fluid rounded-circle flex-shrink-0" alt="">
+                            <div class="position-absolute" style="top: 15px; right: 20px;">
+                                <i class="fa fa-quote-right fa-2x"></i>
+                            </div>
+                            <div class="ps-3 my-auto">
+                                <h4 class="mb-0">Jaspreet Singh</h4>
+                                <p class="m-0">Agro-Retailer</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="d-flex">
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                            </div>
+                            <p class="fs-5 m-0 pt-3">Leaf-Lens is my go-to app for quick diagnosis, confirmation, causes and treatment suggestions.I love the care routines.</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-item rounded bg-light">
+                        <div class="d-flex mb-3">
+                            <img src="{{ url_for('static', filename='img/testimonial-2.jpg') }}" class="img-fluid rounded-circle flex-shrink-0" alt="">
+                            <div class="position-absolute" style="top: 15px; right: 20px;">
+                                <i class="fa fa-quote-right fa-2x"></i>
+                            </div>
+                            <div class="ps-3 my-auto">
+                                <h4 class="mb-0">Sita Kumari</h4>
+                                <p class="m-0">Small farm owner</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="d-flex">
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                            </div>
+                            <p class="fs-5 m-0 pt-3">This app is by far my favorite.It's plant diagnostics are great and almost always spot on.I love the care routines and the interesting articles.</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-item rounded bg-light">
+                        <div class="d-flex mb-3">
+                            <img src="{{ url_for('static', filename='img/testimonial-8.jpg') }}" class="img-fluid rounded-circle flex-shrink-0" alt="">
+                            <div class="position-absolute" style="top: 15px; right: 20px;">
+                                <i class="fa fa-quote-right fa-2x"></i>
+                            </div>
+                            <div class="ps-3 my-auto">
+                                <h4 class="mb-0">Shiva Sharma</h4>
+                                <p class="m-0">Farmer</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="d-flex">
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                                <i class="fas fa-star text-success"></i>
+                            </div>
+                            <p class="fs-5 m-0 pt-3">This website is modern magic of agriculture.Through its step-by-step guide to best practices and products,it helped me improve a lot.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Testimonial End -->
+
+        {% else %}
+        <script>
+            window.location.href = "{{ url_for('signin') }}";
+        </script>
+        {% endif %}
+
+        <!-- Footer Start -->
+        <div class="container-fluid footer py-6 my-6 mb-0 bg-light wow bounceInUp" data-wow-delay="0.1s">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-item">
+                            <h1 class="text-success">Leaf<span class="text-dark">-Lens</span></h1>
+                            <p class="lh-lg mb-4">Stop killing – start treating your plants! with the help of Leaf-Lens treat you beloved plant as well as crops and also increase your crop yield!</p>
+                            <div class="footer-icon d-flex">
+                                <a class="btn btn-success btn-sm-square me-2 rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-success btn-sm-square me-2 rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="btn btn-success btn-sm-square me-2 rounded-circle"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="btn btn-success btn-sm-square rounded-circle"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-item">
+                            <h4 class="mb-4">Special Facilities</h4>
+                            <div class="d-flex flex-column align-items-start">
+                                <a class="text-body mb-3" href=""><i class="fa fa-check text-success me-2"></i>Instant Diagnosis</a>
+                                <a class="text-body mb-3" href=""><i class="fa fa-check text-success me-2"></i>24/7 Customer Support</a>
+                                <a class="text-body mb-3" href=""><i class="fa fa-check text-success me-2"></i>Free treatment</a>
+                                <a class="text-body mb-3" href=""><i class="fa fa-check text-success me-2"></i>Mximize your crop yield</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-item">
+                            <h4 class="mb-4">Contact Us</h4>
+                            <div class="d-flex flex-column align-items-start">
+                                <p><i class="fa fa-map-marker-alt text-success me-2"></i> CTI Road, Howrah, West Bengal</p>
+                                <p><i class="fa fa-phone-alt text-success me-2"></i> (+012) 3456 7890 123</p>
+                                <p><i class="fas fa-envelope text-success me-2"></i> info@example.com</p>
+                                <p><i class="fa fa-clock text-success me-2"></i> 24/7 Hours Service</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-item">
+                            <h4 class="mb-4">Social Gallery</h4>
+                            <div class="row g-2">
+                                <div class="col-4">
+                                     <img src="{{ url_for('static', filename='img/home.png') }}" class="img-fluid rounded-circle border border-success p-2" alt="">
+                                </div>
+                                <div class="col-4">
+                                     <img src="{{ url_for('static', filename='img/leaf1.png') }}" class="img-fluid rounded-circle border border-success p-2" alt="">
+                                </div>
+                                <div class="col-4">
+                                     <img src="{{ url_for('static', filename='img/leaf3.jpg') }}" class="img-fluid rounded-circle border border-success p-2" alt="">
+                                </div>
+                                <div class="col-4">
+                                     <img src="{{ url_for('static', filename='img/leaf4.jpg') }}" class="img-fluid rounded-circle border border-success p-2" alt="">
+                                </div>
+                                <div class="col-4">
+                                     <img src="{{ url_for('static', filename='img/leaf2.jpg') }}" class="img-fluid rounded-circle border border-success p-2" alt="">
+                                </div>
+                                <div class="col-4">
+                                     <img src="{{ url_for('static', filename='img/home1.png') }}" class="img-fluid rounded-circle border border-success p-2" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright bg-dark py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Leaf-Lens</a>, All right reserved.</span>
+                    </div>
+                    <div class="col-md-6 my-auto text-center text-md-end text-white">
+                        Designed By <a class="border-bottom" href="{{url_for('index')}}">Alpha</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-md-square btn-success rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+            <!-- JavaScript Libraries -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="{{ url_for('static', filename='lib/wow/wow.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='lib/waypoints/waypoints.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='lib/counterup/counterup.min.js') }}"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+            <!-- Template Javascript -->
+            <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            document.getElementById('logoutBtn').addEventListener('click', function(event) {
+                event.preventDefault();  // Prevent the default form submission or link behavior
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "Do you want to log out?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, log out!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '{{ url_for("logout") }}';
+                    }
+                });
+            });
+        </script>
+    </body>
+
+</html>

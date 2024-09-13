@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Leaf-Lens</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="img/x-icon">
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playball&display=swap" rel="stylesheet">
+    
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+        <!-- Libraries Stylesheet -->
+        <link href="{{ url_for('static', filename='lib/animate/animate.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.css') }}" rel="stylesheet">
+    
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    
+        <!-- ===== CSS ===== -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/signIn_signUp.css') }}">
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    
+        <!-- ===== BOX ICONS ===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    </head>
+    <body>
+
+        <!-- Navbar start -->
+        <div class="container-fluid nav-bar">
+            <div class="container">
+                <nav class="navbar navbar-light navbar-expand-lg py-4">
+                    <img src="{{ url_for('static', filename='img/icons.png') }}">
+                    <a href="" class="navbar-brand">
+                        <h1 class="text-success fw-bold mb-0">Leaf-Lens</h1>
+                    </a>
+                    <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars text-success"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <!-- Add your navbar links here -->
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a href="{{url_for('signin')}}" class="btn btn-success py-2 px-4 d-none d-xl-inline-block rounded-pill"><i class="bi bi-person-square"></i> User_Login</a>&nbsp;
+                            </li>
+                            <!-- Add more links as needed -->
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Navbar End -->
+
+
+        <div class="login">
+            <div class="login__content">
+                <div class="login__img">
+                    <img src="{{ url_for('static', filename='img/admin_register.jpg') }}" alt="">
+                </div>
+
+                <div class="login__forms">
+                    <form action="{{ url_for('admin_login') }}" method="POST" class="login__registre" id="login-in">
+                        <h1 class="login__title">Admin Sign In</h1>
+    
+                        <div class="login__box">
+                            <i class='bx bx-user login__icon'></i>
+                            <input type="text" name="username" id="username" placeholder="Username" class="login__input" required>
+                        </div>
+        
+                        <div class="login__box">
+                            <i class='bx bx-lock-alt login__icon'></i>
+                            <input type="password" name="password" id="password" placeholder="Password" class="login__input" required>
+                        </div>
+
+                        <a href="#" class="login__forgot">Forgot password?</a>
+                        <br>
+                        <button type="submit" class="btn btn-success btn-lg btn-block w-100" id="signin-btn">Sign In</button>
+                        <br>
+                            <!-- <span class="login__account">Don't have an Account ?</span>
+                            <span class="login__signin" id="sign-up"><a href="">Sign Up</a></span> -->
+                            <center><img src="{{ url_for('static', filename='img/plant.png') }}" alt="plant" ></center>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Footer Start -->
+        <div class="container-fluid footer py-6 my-6 mb-0 bg-light wow bounceInUp" data-wow-delay="0.1s">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-item">
+                            <h1 class="text-success">Leaf<span class="text-dark">-Lens</span></h1>
+                            <p class="lh-lg mb-4">Stop killing – start treating your plants! with the help of Leaf-Lens treat you beloved plant as well as crops and also increase your crop yield!</p>
+                            <div class="footer-icon d-flex">
+                                <a class="btn btn-success btn-sm-square me-2 rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-success btn-sm-square me-2 rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="btn btn-success btn-sm-square me-2 rounded-circle"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="btn btn-success btn-sm-square rounded-circle"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-item">
+                            <h4 class="mb-4">Special Facilities</h4>
+                            <div class="d-flex flex-column align-items-start">
+                                <a class="text-body mb-3" href=""><i class="fa fa-check text-success me-2"></i>Instant Diagnosis</a>
+                                <a class="text-body mb-3" href=""><i class="fa fa-check text-success me-2"></i>24/7 Customer Support</a>
+                                <a class="text-body mb-3" href=""><i class="fa fa-check text-success me-2"></i>Free treatment</a>
+                                <a class="text-body mb-3" href=""><i class="fa fa-check text-success me-2"></i>Mximize your crop yield</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-item">
+                            <h4 class="mb-4">Contact Us</h4>
+                            <div class="d-flex flex-column align-items-start">
+                                <p><i class="fa fa-map-marker-alt text-success me-2"></i> CTI Road, Howrah, West Bengal</p>
+                                <p><i class="fa fa-phone-alt text-success me-2"></i> (+012) 3456 7890 123</p>
+                                <p><i class="fas fa-envelope text-success me-2"></i> info@example.com</p>
+                                <p><i class="fa fa-clock text-success me-2"></i> 24/7 Hours Service</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-item">
+                            <h4 class="mb-4">Social Gallery</h4>
+                            <div class="row g-2">
+                                <div class="col-4">
+                                     <img src="{{ url_for('static', filename='img/home.png') }}" class="img-fluid rounded-circle border border-success p-2" alt="">
+                                </div>
+                                <div class="col-4">
+                                     <img src="{{ url_for('static', filename='img/leaf1.png') }}" class="img-fluid rounded-circle border border-success p-2" alt="">
+                                </div>
+                                <div class="col-4">
+                                     <img src="{{ url_for('static', filename='img/leaf3.jpg') }}" class="img-fluid rounded-circle border border-success p-2" alt="">
+                                </div>
+                                <div class="col-4">
+                                     <img src="{{ url_for('static', filename='img/leaf4.jpg') }}" class="img-fluid rounded-circle border border-success p-2" alt="">
+                                </div>
+                                <div class="col-4">
+                                     <img src="{{ url_for('static', filename='img/leaf2.jpg') }}" class="img-fluid rounded-circle border border-success p-2" alt="">
+                                </div>
+                                <div class="col-4">
+                                     <img src="{{ url_for('static', filename='img/home1.png') }}" class="img-fluid rounded-circle border border-success p-2" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright bg-dark py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Leaf-Lens</a>, All right reserved.</span>
+                    </div>
+                    <div class="col-md-6 my-auto text-center text-md-end text-white">
+                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                        Designed By <a class="border-bottom" href="{{url_for('index')}}">Alpha</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-md-square btn-success rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+        <!-- JavaScript Libraries -->
+        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/easing.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/waypoints.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/counterup.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/lightbox.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+
+        <!-- Template Javascript -->
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        <!--===== MAIN JS =====-->
+        <script src="{{ url_for('static', filename='js/signIn_signUp.js') }}"></script>
+
+        {% if msg %}
+        <script>
+            Swal.fire({
+                icon: '{{ msg_icon }}',  // "success", "error", "warning", "info"
+                title: '{{ msg_title }}',  // Title based on the login result
+                text: '{{ msg }}',  // The message to display
+            });
+        </script>
+        {% endif %}
+
+    </body>
+</html>
